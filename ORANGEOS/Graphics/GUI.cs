@@ -70,12 +70,12 @@ namespace ORANGEOS.Graphics
                     this.savedPixels.Add(new Tuple<Sys.Graphics.Point, Color>(p, this.canvas.GetPointColor(p.X, p.Y)));
                     this.canvas.DrawPoint(this.pen, p);
                 }
-
-                if (MouseManager.MouseState == MouseState.Left && this.prevMouseState!=MouseState.Left)
+            }
+            
+            if (MouseManager.MouseState == MouseState.Left && this.prevMouseState!=MouseState.Left)
                     System.Console.Beep();
 
-                this.prevMouseState = MouseManager.MouseState;
-            }
+            this.prevMouseState = MouseManager.MouseState;
         }
     }
 }
