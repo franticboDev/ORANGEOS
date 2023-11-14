@@ -1,0 +1,9 @@
+build/
+.DS_Store
+.bin
+.o
+.log
+.vscode/
+.md
+
+!README.md

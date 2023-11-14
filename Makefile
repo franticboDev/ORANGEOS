@@ -2,7 +2,10 @@ ASM = nasm
 SRC_DIR = src
 BUILD_DIR = build
 
-all: bootloader floppy_image
+all: clean setup_dirs bootloader floppy_image
+
+setup_dirs:
+	mkdir -p build
 
 floppy_image: $(BUILD_DIR)/main_floppy.img
 $(BUILD_DIR)/main_floppy.img: $(BUILD_DIR)/main.bin
