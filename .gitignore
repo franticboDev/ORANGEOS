@@ -6,5 +6,6 @@ build/
 .log
 .vscode/
 .md
+.err
 
 !README.md
