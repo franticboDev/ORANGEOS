@@ -14,4 +14,3 @@ void puts(const char* str)
         str++;
     }
 }
- 
