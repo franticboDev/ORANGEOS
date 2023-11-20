@@ -2,7 +2,7 @@
 
 An x86_64 OS
 
-# install or update all apt-get dependencies
+# Install or update all apt-get dependencies
 
 Must add these dependencies if available
 
