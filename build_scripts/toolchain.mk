@@ -44,4 +44,10 @@ toolchain/gcc-$(GCC_VERSION).tar.xz:
 	mkdir -p toolchain
 	cd toolchain && wget $(GCC_URL)
 
+#
+# Clean
+#
+clean-toolchain:
+	rm -rf toolchain
+
 .PHONY: toolchain toolchain_binutils toolchain_gcc
