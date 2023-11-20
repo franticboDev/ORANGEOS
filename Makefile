@@ -55,7 +55,7 @@ $(BUILD_DIR)/tools/fat: always tools/fat/fat.c
 #
 # Always
 #
-always:
+always: clean
 	mkdir -p $(BUILD_DIR)
 
 #
@@ -71,4 +71,4 @@ clean:
 # Run
 #
 run: $(BUILD_DIR)/main_floppy.img
-	qemu-system-i386 -fda $<
+	qemu-system-i386 -fda build/main_floppy.img
