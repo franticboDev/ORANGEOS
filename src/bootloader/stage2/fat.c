@@ -4,8 +4,8 @@
 #include "string.h"
 #include "memory.h"
 #include "ctype.h"
-#include "minmax.h"
 #include <stddef.h>
+#include "minmax.h"
 
 #define SECTOR_SIZE             512
 #define MAX_PATH_SIZE           256
@@ -40,6 +40,7 @@ typedef struct
     // ... we don't care about code ...
 
 } __attribute__((packed)) FAT_BootSector;
+
 
 typedef struct
 {
@@ -202,7 +203,7 @@ uint32_t FAT_Read(DISK* disk, FAT_File* file, uint32_t byteCount, void* dataOut)
     uint8_t* u8DataOut = (uint8_t*)dataOut;
 
     // don't read past the end of the file
-    if (!fd->Public.IsDirectory || (fd->Public.IsDirectory && fd->Public.Size != 0 )) 
+    if (!fd->Public.IsDirectory || (fd->Public.IsDirectory && fd->Public.Size != 0))
         byteCount = min(byteCount, fd->Public.Size - fd->Public.Position);
 
     while (byteCount > 0)
@@ -306,7 +307,7 @@ bool FAT_FindFile(DISK* disk, FAT_File* file, const char* name, FAT_DirectoryEnt
         {
             *entryOut = entry;
             return true;
-        }
+        }        
     }
     
     return false;
