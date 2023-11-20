@@ -2,6 +2,11 @@
     "files.associations": {
         "stdint.h": "c",
         "stdio.h": "c",
+        "memdefs.h": "c",
+        "ctype.h": "c",
+        "stddef.h": "c",
+        "memory.h": "c",
+        "minmax.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
