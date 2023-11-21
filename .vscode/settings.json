@@ -9,6 +9,7 @@
         "minmax.h": "c",
         "io.h": "c",
         "gdt.h": "c",
+        "hal.h": "c",
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
