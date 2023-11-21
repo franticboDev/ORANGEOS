@@ -13,6 +13,8 @@ void __attribute__((section(".entry"))) start(uint16_t bootDrive)
 
     printf("Hello world from kernel!!!\n");
 
+    printf("Number %d string %s\n", 123, "sss");
+
 end:
     for (;;);
 }
