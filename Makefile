@@ -1,10 +1,10 @@
-include build_scripts/config.mk
+include build_tools/config.mk
 
 .PHONY: all floppy_image kernel bootloader clean always tools_fat
 
 all: floppy_image tools_fat
 
-include build_scripts/toolchain.mk
+include build_tools/toolchain.mk
 
 #
 # Floppy image
