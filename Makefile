@@ -55,7 +55,7 @@ $(BUILD_DIR)/tools/fat: always tools/fat/fat.c
 #
 # Always
 #
-always: clean
+always:
 	mkdir -p $(BUILD_DIR)
 
 #

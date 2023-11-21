@@ -6,7 +6,8 @@
         "ctype.h": "c",
         "stddef.h": "c",
         "memory.h": "c",
-        "minmax.h": "c"
+        "minmax.h": "c",
+        "io.h": "c",
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
