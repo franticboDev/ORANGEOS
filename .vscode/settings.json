@@ -10,6 +10,7 @@
         "io.h": "c",
         "gdt.h": "c",
         "hal.h": "c",
+        "array": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

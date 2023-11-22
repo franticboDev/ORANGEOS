@@ -1,9 +1,9 @@
 export CFLAGS = -std=c99 -g
-export ASM = nasm
 export ASMFLAGS =
 export CC = gcc
 export CXX = g++
 export LD = gcc
+export ASM = nasm
 export LINKFLAGS =
 export LIBS =
 
