@@ -1,16 +1,6 @@
 {
     "files.associations": {
-        "stdint.h": "c",
-        "stdio.h": "c",
-        "memdefs.h": "c",
-        "ctype.h": "c",
-        "stddef.h": "c",
-        "memory.h": "c",
-        "minmax.h": "c",
-        "io.h": "c",
-        "gdt.h": "c",
-        "hal.h": "c",
-        "array": "cpp"
-    },
-    "C_Cpp.errorSquiggles": "enabled"
+        "x86.h": "c",
+        "stdio.h": "c"
+    }
 }

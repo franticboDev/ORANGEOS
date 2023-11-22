@@ -114,7 +114,7 @@ x86_Disk_GetDriveParams:
 
     ; drive type from bl
     LinearToSegOffset [bp + 12], es, esi, si
-    mov es:[si], bl
+    mov [es:si], bl
 
     ; cylinders
     mov bl, ch          ; cylinders - lower bits in ch
@@ -123,21 +123,21 @@ x86_Disk_GetDriveParams:
     inc bx
 
     LinearToSegOffset [bp + 16], es, esi, si
-    mov es:[si], bx
+    mov [es:si], bx
 
     ; sectors
     xor ch, ch          ; sectors - lower 5 bits in cl
     and cl, 3Fh
     
     LinearToSegOffset [bp + 20], es, esi, si
-    mov es:[si], cx
+    mov [es:si], cx
 
     ; heads
     mov cl, dh          ; heads - dh
     inc cx
 
     LinearToSegOffset [bp + 24], es, esi, si
-    mov es:[si], cx
+    mov [es:si], cx
 
     ; restore regs
     pop di
@@ -233,6 +233,77 @@ x86_Disk_Read:
 
     ; restore regs
     pop es
+    pop ebx
+
+    push eax
+
+    x86_EnterProtectedMode
+
+    pop eax
+
+    ; restore old call frame
+    mov esp, ebp
+    pop ebp
+    ret
+
+
+;
+; int ASMCALL x86_E820GetNextBlock(E820MemoryBlock* block, uint32_t* continuationId);
+;
+E820Signature   equ 0x534D4150
+
+global x86_E820GetNextBlock
+x86_E820GetNextBlock:
+
+    ; make new call frame
+    push ebp             ; save old call frame
+    mov ebp, esp          ; initialize new call frame
+
+    x86_EnterRealMode
+
+    ; save modified regs
+    push ebx
+    push ecx
+    push edx
+    push esi
+    push edi
+    push ds
+    push es
+
+    ; setup params
+    LinearToSegOffset [bp + 8], es, edi, di     ; es:di pointer to structure
+    
+    LinearToSegOffset [bp + 12], ds, esi, si    ; ebx - pointer to continuationId
+    mov ebx, ds:[si]
+
+    mov eax, 0xE820                             ; eax - function
+    mov edx, E820Signature                      ; edx - signature
+    mov ecx, 24                                 ; ecx - size of structure
+
+    ; call interrupt
+    int 0x15
+
+    ; test results
+    cmp eax, E820Signature
+    jne .Error
+
+    .IfSuccedeed:
+        mov eax, ecx            ; return size
+        mov ds:[si], ebx        ; fill continuation parameter
+        jmp .EndIf
+
+    .Error:
+        mov eax, -1
+
+    .EndIf:
+
+    ; restore regs
+    pop es
+    pop ds
+    pop edi
+    pop esi
+    pop edx
+    pop ecx
     pop ebx
 
     push eax

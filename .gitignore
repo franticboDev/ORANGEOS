@@ -1,11 +1,7 @@
 build/
 toolchain/
-.DS_Store
-*.bin
-*.o
-*.img
-*.log
-*.md
 *.err
-
-!README.md
+bx_enh_dbg.ini
+.vscode/*.log
+.sconsign.dblite
+__pycache__/
