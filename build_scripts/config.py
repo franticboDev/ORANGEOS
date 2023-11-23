@@ -1,6 +1,6 @@
 #config = 'release'
 #arch = 'i686'
-imageType = 'disk'
+imageType = 'floppy'
 imageFS = 'fat32'
 imageSize = '250m'
 toolchain='toolchain'
